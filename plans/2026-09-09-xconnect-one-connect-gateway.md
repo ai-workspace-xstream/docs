@@ -105,6 +105,15 @@ Homebrew、`curl install.svc.plus/...` 与 Windows PowerShell 仅是 CLI 分发�
 - 设备撤销后 Gateway peer 收敛，One 无法再次 sync 获取有效配置；
 - XConnect APP 未被修改或接管。
 
+## 交付追踪
+
+- [One 产品化 Epic #22](https://github.com/ai-workspace-xstream/XConnect-One/issues/22)
+- [Linux 受管运行时 #23](https://github.com/ai-workspace-xstream/XConnect-One/issues/23)
+- [macOS One runtime adapter #24](https://github.com/ai-workspace-xstream/XConnect-One/issues/24)
+- [Windows One runtime adapter #25](https://github.com/ai-workspace-xstream/XConnect-One/issues/25)
+- [Gateway readiness/peer evidence #9](https://github.com/ai-workspace-xstream/XConnect-Gateway/issues/9)
+- [UAT 分阶段验证 #632](https://github.com/ai-workspace-infra/platform-ops-toolkit/issues/632)
+
 ## 风险与约束
 
 - WireGuard 驱动、root helper 和 Windows 服务安装需要各平台管理员权限，不能伪装成

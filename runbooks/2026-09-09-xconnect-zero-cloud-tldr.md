@@ -14,6 +14,35 @@ Gateway 与 One 只消费签名配置并运行数据面。Portal 的 ACK 仅代�
 不将短期邀请、设备凭据、WireGuard 私钥、TLS 私钥、Vault 值或真实地址写入
 Git、终端历史、CI 参数或本手册。
 
+## One 的产品目标：一条命令接入 Gateway
+
+XConnect One CLI 的产品职责是把跨平台接入 Gateway 的复杂度封装起来。用户应只需
+安装 One、在 Zero Portal 确认邀请，然后执行加入、查看状态和离开；不应手工维护
+Xray JSON、WireGuard peer、密钥、端口、路由或 systemd/Windows 服务定义。
+
+```text
+安装 One
+  → xconnect join（短期邀请或获批自注册）
+  → xconnect status
+  → xconnect sync（配置变更/续期）
+  → xconnect leave
+```
+
+目标中的 `join` / `sync` 必须在 macOS、Linux 和 Windows 具有一致语义：
+
+- 验证平台权限、外部运行时可用性与签名配置；
+- 生成并保护本机密钥、Xray transport、WireGuard 配置和运行状态；
+- 使用本机 transport adapter 把 WireGuard UDP 送入 Gateway 的 VLESS/TLS；
+- 以平台适配器启动、重启、停止仅属于 One 的 Xray/WireGuard 运行时；
+- 回读精确 peer handshake、报告私网可达性，并对实际应用结果 ACK。
+
+One 不承担 Gateway 角色，不签发配置，不修改 Zero 策略，也不接管 XConnect APP。
+APP 后续可通过插件调用 One，但不改变独立 CLI 的安全边界。
+
+当前 `v0.1.9` 是过渡实现：CLI 已负责签名配置、密钥、生成、启动与 ACK，但节点
+管理员仍需预装外部 Xray/WireGuard。后续实现应提供经过校验的受管运行时与
+macOS/Linux/Windows 服务适配，逐步消除这些手工前置步骤。
+
 ## 安装入口
 
 安装器只下载、校验并安装 CLI 二进制；不会加入网络，不会启动 Xray/WireGuard，

@@ -25,5 +25,6 @@
 
 ## 当前重点
 
+- [XConnect / Proxy-Server 部署路线总览](runbooks/2026-10-03-xconnect-deployment-routes.md)
 - [下一版本账户暂停与代理 UUID 管理需求](requirements/2026-07-05-account-suspension-and-proxy-uuid.md)
 - [svc.plus 修复快照](incidents/2026-07-05-svc-plus-repair-snapshot.md)

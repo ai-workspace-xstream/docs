@@ -4,4 +4,5 @@
 
 ## 当前文档
 
+- [2026-11-23 重复 `EXPORTER_NODE_ID` 导致 Edge Checkpoint 乒乓循环与账单虚增复盘](2026-11-23-duplicate-exporter-node-id-billing-pingpong.md)
 - [2026-07-05 svc.plus 修复快照](2026-07-05-svc-plus-repair-snapshot.md)
